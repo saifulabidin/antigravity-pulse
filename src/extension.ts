@@ -4,8 +4,7 @@
  * Shows your Antigravity model quota in the status bar, grouped
  * by pool (Gemini 3.x · Claude/GPT · Gemini 2.5).
  *
- * Each pool gets a color indicator (🟢/🟡/🔴).
- * Hover for full details. Click to refresh.
+ * Each pool gets a color indicator (🟢/🟡/🔴) that changes based on remaining quota.
  */
 
 import * as vscode from 'vscode';
@@ -122,25 +121,15 @@ function updateStatusBar(snap: QuotaSnapshot) {
     if (snap.pools.length > 0) {
         // ── Compact status bar: 🟢Gem 85 🟡CL 42 🟢G2.5 90 ──
         const parts: string[] = [];
-        let worstPct = 100;
 
         for (const pool of snap.pools) {
             const short = POOL_SHORT[pool.id] || pool.id;
             const pct = Math.round(pool.remainingPct);
             parts.push(`${healthDot(pool.remainingPct)} ${short} ${pct}%`);
-            if (pool.remainingPct < worstPct) { worstPct = pool.remainingPct; }
         }
 
         statusBarItem.text = parts.join(' | ');
-
-        // Background color based on worst pool
-        if (worstPct <= 20) {
-            statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
-        } else if (worstPct <= 50) {
-            statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
-        } else {
-            statusBarItem.backgroundColor = undefined;
-        }
+        statusBarItem.backgroundColor = undefined;
 
         // Rich Markdown tooltip
         statusBarItem.tooltip = buildTooltip(snap);

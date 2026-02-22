@@ -1,9 +1,9 @@
 # Antigravity Pulse
 
-100% local & private. Super lightweight. A **50 KB** status bar extension for Antigravity **Pro & Ultra** users who want to monitor their AI model quota at a glance — without external network calls, OAuth flows, or background overhead.
+100% local & private. Super lightweight. A **120 KB** status bar extension for Antigravity **Pro & Ultra** users who want to monitor their AI model quota at a glance — without external network calls, OAuth flows, or background overhead.
 
 <p align="center">
-  <img src="screenshot.png" alt="Antigravity Pulse" width="480">
+  <img src="https://raw.githubusercontent.com/codavidgarcia/antigravity-pulse/main/screenshot.png" alt="Antigravity Pulse" width="480">
 </p>
 
 Hover for a rich Markdown tooltip with per-pool progress bars, individual model breakdown, and reset timers.
@@ -21,7 +21,7 @@ Everything runs **100% on your machine**. The extension reads quota data from th
 
 ## Lightweight
 
-The entire extension is **50 KB** unpacked. No bundled webviews, no CSS frameworks, no localization files. Three TypeScript files compiled to plain JavaScript.
+The entire extension is **120 KB** unpacked. No bundled webviews, no CSS frameworks, no localization files. Three TypeScript files compiled to plain JavaScript.
 
 - Activates in milliseconds
 - Polls every 30 seconds with a single local HTTPS POST (~1ms round trip)
@@ -36,8 +36,6 @@ Each model pool gets a **color-coded health indicator** directly in the status b
 | 🟢 | Healthy | > 50% |
 | 🟡 | Low | 20% – 50% |
 | 🔴 | Critical | < 20% |
-
-When any pool drops below 50%, the entire status bar item highlights in yellow. Below 20%, it turns red.
 
 ## Per-pool quota tracking
 
@@ -84,6 +82,12 @@ Hover over the status bar item for a detailed, formatted breakdown:
 
 - Antigravity IDE must be running
 - Pro or Ultra subscription for meaningful quota tracking
+
+## GitHub
+
+Source code and releases: [codavidgarcia/antigravity-pulse](https://github.com/codavidgarcia/antigravity-pulse)
+
+If you find this useful, consider giving it a ⭐ on GitHub!
 
 ## License
 
